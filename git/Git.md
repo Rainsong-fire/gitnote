@@ -20,8 +20,8 @@
 
       这个config 是git 自己的，在cmd 命令行中输入：
 
-      1.    git config --global user.name ""
-      2.    git config --global user.email ""
+      1.    git config --global user.name 
+      2.    git config --global user.email 
 
 3.    之后可以用git config -l 来list所有的配置
 
