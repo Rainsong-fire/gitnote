@@ -45,7 +45,7 @@
 
       可以看到出现了一个隐藏文件.git，这个文件是git 用来跟踪管理这个目录的。
 
-      ![image-20210801115342148](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801115342148.png)
+      ![image-20210801115342148](Git.assets/image-20210801115342148.png)
 
       在一个非空的文件夹内建立git repository也是可以的。
 
@@ -116,7 +116,7 @@
 
                   要加 --stage + filename。如：
             
-                  ![image-20210801152526242](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801152526242.png)
+                  ![image-20210801152526242](Git.assets/image-20210801152526242.png)
             
                   
             
@@ -162,7 +162,7 @@
 
 4.    如果是误删文件，只要版本库没有提交，那么就可以从版本库中取回：
 
-      ![image-20210801154127915](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801154127915.png)
+      ![image-20210801154127915](Git.assets/image-20210801154127915.png)
 
       checkout 命令用于从版本库中提取某文件到工作区。
 
@@ -204,7 +204,7 @@
 
             即可。如图：
 
-            ![image-20210801163415682](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801163415682.png)
+            ![image-20210801163415682](Git.assets/image-20210801163415682.png)
 
             这样，就添加了远程的仓库。远程库的名字为origin，这个是默认的叫法。
 
@@ -254,7 +254,7 @@
 
             注意：冒号后没有空格。
 
-            ![image-20210801165152596](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801165152596.png)
+            ![image-20210801165152596](Git.assets/image-20210801165152596.png)
 
 8.    git 进行clone 的地址有两种，ssh，或者是https
 
@@ -308,7 +308,7 @@
 
             git merge dev
 
-            ![image-20210801172834117](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801172834117.png)
+            ![image-20210801172834117](Git.assets/image-20210801172834117.png)
 
             即可。
 
@@ -342,7 +342,7 @@
 
 3.    查看不同，用cat + 文件名即可。
 
-4.    ![image-20210801175635773](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801175635773.png)
+4.    ![image-20210801175635773](Git.assets/image-20210801175635773.png)
 
 
 ### 用分支处理bug
@@ -361,7 +361,7 @@
       
       或者是，git stash apply，然后git stash drop。
       
-      ![image-20210801182945062](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801182945062.png)
+      ![image-20210801182945062](Git.assets/image-20210801182945062.png)
       
 4.    如何单独的复制一次提交：
 
@@ -373,7 +373,7 @@
 
             如图：
 
-            ![image-20210801184111306](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801184111306.png)
+            ![image-20210801184111306](Git.assets/image-20210801184111306.png)
 
             在log 模式下，退出按q即可。
 
@@ -441,13 +441,13 @@
 
       git tag -a name -m "blalblalbls" commit id
 
-      ![image-20210801194608381](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801194608381.png)
+      ![image-20210801194608381](Git.assets/image-20210801194608381.png)
 
 5.    删除标签：
 
       git tag -d tagname
 
-      ![image-20210801195236932](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801195236932.png)
+      ![image-20210801195236932](Git.assets/image-20210801195236932.png)
 
       推送标签：
 
@@ -457,7 +457,7 @@
       
       git push origin :refs/tags/tagname删除标签。
 
-![image-20210801195150429](C:\Users\E1900\AppData\Roaming\Typora\typora-user-images\image-20210801195150429.png)
+![image-20210801195150429](Git.assets/image-20210801195150429.png)
 
 
 
