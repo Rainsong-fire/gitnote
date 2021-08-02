@@ -15,7 +15,7 @@
 
 3.    之后可以用git config -l 来list所有的配置
 
-4.    ![image-20210801113245996](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801113245996.png)
+      ![image-20210801113245996](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801113245996.png)
 
 5.    因为git 是分布式版本控制系统，因此必须配置个人的信息。所以
 
@@ -34,6 +34,7 @@
       在windows 下，可以借助power shell，更方便。
 
       可以看到出现了一个隐藏文件.git，这个文件是git 用来跟踪管理这个目录的。
+      
 
       ![image-20210801115342148](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801115342148.png)
 
@@ -106,7 +107,7 @@
 
                   要加 --stage + filename。如：
 
-                  ![image-20210801152526242](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801152526242.png)
+      ![image-20210801152526242](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801152526242.png)
 
                   
 
@@ -151,7 +152,6 @@
 3.    git commit即可。
 
 4.    如果是误删文件，只要版本库没有提交，那么就可以从版本库中取回：
-
       ![image-20210801154127915](https://i.loli.net/2021/08/02/SKyCDPm6BtZpV5q.png)
 
       checkout 命令用于从版本库中提取某文件到工作区。
@@ -194,7 +194,7 @@
 
             即可。如图：
 
-            ![image-20210801163415682](https://i.loli.net/2021/08/02/qkgAnXtCM2vNr5x.png)
+      ![image-20210801163415682](https://i.loli.net/2021/08/02/qkgAnXtCM2vNr5x.png)
 
             这样，就添加了远程的仓库。远程库的名字为origin，这个是默认的叫法。
 
@@ -244,7 +244,8 @@
 
             注意：冒号后没有空格。
 
-            ![image-20210801165152596](https://i.loli.net/2021/08/02/d3vsG2aSZLTe1EK.png)
+
+      ![image-20210801165152596](https://i.loli.net/2021/08/02/d3vsG2aSZLTe1EK.png)
 
 8.    git 进行clone 的地址有两种，ssh，或者是https
 
@@ -297,8 +298,8 @@
             git checkout master
 
             git merge dev
-
-            ![image-20210801172834117](https://i.loli.net/2021/08/02/Gnb46Elc5yBHT9N.png)
+       
+      ![image-20210801172834117](https://i.loli.net/2021/08/02/Gnb46Elc5yBHT9N.png)
 
             即可。
 
@@ -363,7 +364,7 @@
 
             如图：
 
-            ![image-20210801184111306](https://i.loli.net/2021/08/02/h961iN54OfFWqwS.png)
+      ![image-20210801184111306](https://i.loli.net/2021/08/02/h961iN54OfFWqwS.png)
 
             在log 模式下，退出按q即可。
 
@@ -447,7 +448,7 @@
 
       git push origin :refs/tags/tagname删除标签。
 
-![image-20210801195150429](https://i.loli.net/2021/08/02/Vyviw1HUBsd5pfA.png)
+      ![image-20210801195150429](https://i.loli.net/2021/08/02/Vyviw1HUBsd5pfA.png)
 
 ### rebase
 
@@ -461,13 +462,14 @@
 
       1.    产生history fork。历史分叉：
 
-            ![image-20210802112410380](https://i.loli.net/2021/08/02/VZqKPoGIEd4CbzF.png)
+      ![image-20210802112410380](https://i.loli.net/2021/08/02/VZqKPoGIEd4CbzF.png)
 
             
 
             b. 使用merge：
 
-            merge 是git pull 的一个步骤。本质就是两个分支如果没有冲突，直接update，如果有冲突，那么就解决冲突，然后update。这时，main分支没有变化，但是feature 分支已经是建立在main分支的基础上了。![image-20210802113630041](https://i.loli.net/2021/08/02/I4Vjs5WKtQrXgoa.png)
+            merge 是git pull 的一个步骤。本质就是两个分支如果没有冲突，直接update，如果有冲突，那么就解决冲突，然后update。这时，main分支没有变化，但是feature 分支已经是建立在main分支的基础上了。
+      ![image-20210802113630041](https://i.loli.net/2021/08/02/I4Vjs5WKtQrXgoa.png)
 
             可以认为，是把main分支上的所有的变化，合并到了feature 分支中。
 
@@ -483,7 +485,7 @@
 
             This moves the entire `feature` branch to begin on the tip of the `main` branch, effectively incorporating all of the new commits in `main`. But, instead of using a merge commit, rebasing *re-writes* the project history by creating brand new commits for each commit in the original branch.每一个feature中的commit，都在rebase 的过程中重写了。project history 不见了。
 
-            ![image-20210802115118539](https://i.loli.net/2021/08/02/5yilhT46E1vpx9z.png)
+      ![image-20210802115118539](https://i.loli.net/2021/08/02/5yilhT46E1vpx9z.png)
 
       3.    rebase 的优点首先是，没有了菱形的历史记录，变成了线形。
 
@@ -505,7 +507,7 @@
 
             golden rule 就是，永远不要用在公共分支。
 
-            ![image-20210802122419087](https://i.loli.net/2021/08/02/jHAgha5UBWtClLo.png)
+      ![image-20210802122419087](https://i.loli.net/2021/08/02/jHAgha5UBWtClLo.png)
 
             也就是，把公共的分支，rebase 到自己的feature 分支之上。这样做，只有自己的本地库改变了，其他人的没有变，远端库也没有变化。git 会认为这个本地库的main 和远端库的main 发生了分叉。
 
@@ -531,7 +533,7 @@
 
             就是最后三步进行重写。
 
-            ![image-20210802124905217](https://i.loli.net/2021/08/02/Uz7plHfsxoWMbE6.png)
+      ![image-20210802124905217](https://i.loli.net/2021/08/02/Uz7plHfsxoWMbE6.png)
 
       #### private branch can perform rebase
 
