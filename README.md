@@ -15,7 +15,7 @@
 
 3.    之后可以用git config -l 来list所有的配置
 
-4.    ![image-20210801113245996](https://i.loli.net/2021/08/02/wXvMuokUOT4nzl7.png)
+4.    ![image-20210801113245996](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801113245996.png)
 
 5.    因为git 是分布式版本控制系统，因此必须配置个人的信息。所以
 
