@@ -35,7 +35,7 @@
 
       可以看到出现了一个隐藏文件.git，这个文件是git 用来跟踪管理这个目录的。
 
-      ![image-20210801115342148](https://i.loli.net/2021/08/02/tIGTiqlLcz9NrWX.png)
+      ![image-20210801115342148](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801115342148.png)
 
       在一个非空的文件夹内建立git repository也是可以的。
 
@@ -106,7 +106,7 @@
 
                   要加 --stage + filename。如：
 
-                  ![image-20210801152526242](https://i.loli.net/2021/08/02/YFvMCOj3aNRg1lw.png)
+                  ![image-20210801152526242](https://github.com/Rainsong-fire/gitnote/blob/master/git/Git.assets/image-20210801152526242.png)
 
                   
 
