@@ -1,16 +1,6 @@
 # Git
 
-### 简介
 
-1.    Git 是一个分布式的版本控制系统。
-
-2.    工作区：就是电脑中能看到的目录，在这个目录中进行修改，增删等工作。
-
-      暂存区：(stage) 通过git add 提交。暂存区在版本库.git 中。
-
-      版本库：版本库就是.git 那个隐藏的文件。
-
-3.    注意一点，git跟踪管理的，不是文件，而是对文件的修改。git将修改存放到stage暂存区。
 
 ### 安装
 
@@ -20,12 +10,12 @@
 
       这个config 是git 自己的，在cmd 命令行中输入：
 
-      1.    git config --global user.name 
-      2.    git config --global user.email 
+      1.    git config --global user.name ""
+      2.    git config --global user.email ""
 
 3.    之后可以用git config -l 来list所有的配置
 
-4.    ![image-20210801113245996](Git.assets/image-20210801113245996.png)
+4.    ![image-20210801113245996](Git.assets/image-20210801113245996-16278746943501.png)
 
 5.    因为git 是分布式版本控制系统，因此必须配置个人的信息。所以
 
@@ -459,13 +449,101 @@
 
 ![image-20210801195150429](Git.assets/image-20210801195150429.png)
 
+### rebase
 
+1.    简单理解，rebase是把某个分支的一系列的commit ，从某个分支的HEAD 处，重新进行一遍提交。
 
+      因此有两个结果，一是时间线变成了直线，也可以用来合并commit。二是可以将某个分支上做的所有的改动，都合并到master 分支上。
 
+2.    rebase 和merge 是同样的目的，就是合并分支。integrate changes of one branch into another branch但是方式不同。
 
+3.    基本流程：
 
+      1.    产生history fork。历史分叉：
 
+            ![image-20210802112410380](Git.assets/image-20210802112410380-16278746994612-16278747182183.png)
 
+            
+
+            b. 使用merge：
+
+            merge 是git pull 的一个步骤。本质就是两个分支如果没有冲突，直接update，如果有冲突，那么就解决冲突，然后update。这时，main分支没有变化，但是feature 分支已经是建立在main分支的基础上了。![image-20210802113630041](Git.assets/image-20210802113630041.png)
+
+            可以认为，是把main分支上的所有的变化，合并到了feature 分支中。
+
+            这样做的优点是，main没有变化，很安全。但是如果main经常变化，那么就经常需要这种merge。
+
+            
+
+      3.    使用rebase：
+
+            另外一种合并的方式，就是把feature branch 的开端，从原来的开端移植当前的开端。
+
+            这样做很方便，但是他将所有的历史记录，都改变了。原来feature 的历史记录，被抹除了，因此整体呈现一个线性。main 分支并没有改变。feature 分支建立在了新的分支的头部。
+
+            This moves the entire `feature` branch to begin on the tip of the `main` branch, effectively incorporating all of the new commits in `main`. But, instead of using a merge commit, rebasing *re-writes* the project history by creating brand new commits for each commit in the original branch.每一个feature中的commit，都在rebase 的过程中重写了。project history 不见了。
+
+            ![image-20210802115118539](Git.assets/image-20210802115118539.png)
+
+      4.    rebase 的优点首先是，没有了菱形的历史记录，变成了线形。
+
+      ##### rebase -i
+
+      1.    interacting rebase 很强大，因为它允许在进行移植的过程中，对每一个commit 进行操作。
+
+      2.    git rebase -i main
+
+            打开一个text editor。用fixup语句，将多个commit合并。
+
+            这是merge 不能做到的。merge 的历史完全保留了。
+
+      
+
+      #### golden rule
+
+      1.    The golden rule of `git rebase` is to never use it on *public* branches.
+
+            golden rule 就是，永远不要用在公共分支。
+
+            ![image-20210802122419087](Git.assets/image-20210802122419087.png)
+
+            也就是，把公共的分支，rebase 到自己的feature 分支之上。这样做，只有自己的本地库改变了，其他人的没有变，远端库也没有变化。git 会认为这个本地库的main 和远端库的main 发生了分叉。
+
+            
+
+      2.    如果想把这个被rebased 了的main push 回远端，那么git 会阻止这么做。因为，这其中存在冲突。因为rebase 的commit ，全都是基于原project 的commit 的新的commit，因此存在冲突。
+
+            如果想强行push，就要用：
+
+            force pushing,        git push --force
+
+            这会把远端强行写成和本地端一样的内容。但是其他人可能会非常疑惑。
+
+      3.    force push 的一个为数不多的用处是，你已经将本feature push 给了远端，用正常的方式，也就是merge，但是呢，这个feature写的很乱，你想重新把它clean up之后再进行push。就可以用rebase，先继续宁clean up，然后强推给远端。
+
+      #### local clean up
+
+      1.    通过rebase，可以进行local clean up，也就是将各种繁琐的，复杂的log，变成精简的log。
+
+      2.    rebase 有两种选择，一个是本feature 的parent branch，另一个是feature 自己的先前的某次commit，也就是在某次commit 之后，进行rebase操作。相当于是重写。
+
+            git rebase  -i HEAD~3
+
+            就是最后三步进行重写。
+
+            ![image-20210802124905217](Git.assets/image-20210802124905217.png)
+
+      #### private branch can perform rebase
+
+      1.    比如当两个员工，都同时在某个feature工作，他们都同时对某个feature 进行了新的branch，当最后提交的时候，可以不用merge，而用rebase，将两个人的工作合并，进行提交。
+
+      
+
+      
+
+      
+
+      
 
 
 
